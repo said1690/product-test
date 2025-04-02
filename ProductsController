@@ -1,0 +1,26 @@
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+[Route("api/[controller]")]
+[ApiController]
+public class ProductsController : ControllerBase
+{
+    [HttpGet]
+    public async Task<IActionResult> GetProducts()
+    {
+        var products = new List<Product>
+        {
+            new Product { Id = 1, Name = "Laptop", Price = 1200 },
+            new Product { Id = 2, Name = "Phone", Price = 800 }
+        };
+        return Ok(products);
+    }
+}
+
+public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+}
